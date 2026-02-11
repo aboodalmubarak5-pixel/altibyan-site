@@ -1,0 +1,255 @@
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Heart, Phone, MessageCircle, Home, Info, BarChart3, MapPin, Youtube, Send, Moon, Sun, Globe, Megaphone, Music, LayoutGrid } from 'lucide-react';
+import { LINKS, CONTACT_INFO } from '../constants';
+import { useThemeLanguage } from '../context/ThemeLanguageContext';
+
+const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme, language, toggleLanguage, t } = useThemeLanguage();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: t.nav.home, href: '#hero', icon: <Home size={18} /> },
+    { name: t.nav.about, href: '#about', icon: <Info size={18} /> },
+    { name: t.nav.circleTypes, href: '#circle-types', icon: <LayoutGrid size={18} /> },
+    { name: t.nav.ads, href: '#ads', icon: <Megaphone size={18} /> },
+    { name: t.nav.recitations, href: '#recitations', icon: <Music size={18} /> },
+    { name: t.nav.donate, href: '#donate', icon: <Heart size={18} /> },
+    { name: t.nav.stats, href: '#stats', icon: <BarChart3 size={18} /> },
+    { name: t.nav.mosques, href: '#mosques', icon: <MapPin size={18} /> },
+    { name: t.nav.contact, href: '#contact', icon: <Phone size={18} /> },
+  ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setIsOpen(false);
+    
+    if (!href.startsWith('#')) {
+      window.location.href = href;
+      return;
+    }
+
+    const element = document.querySelector(href);
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  // Determine if navbar should look solid
+  const isSolid = scrolled || isOpen;
+
+  // Classes for text based on state
+  const textClass = isSolid 
+    ? 'text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-secondary' 
+    : 'text-white hover:bg-white/10';
+
+  const mobileBgClass = 'bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800';
+  const mobileTextClass = 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800';
+
+  return (
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isSolid ? 'bg-white dark:bg-gray-900 shadow-lg py-2' : 'bg-transparent py-4'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          <div className="flex-shrink-0 flex items-center gap-3">
+             <img 
+                src="https://i.postimg.cc/wMQPL0GJ/IMG-20260211-081616-(1).png" 
+                alt={t.common.siteName} 
+                className="h-14 w-auto object-contain drop-shadow-md"
+              />
+          </div>
+          
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center gap-2">
+            <div className={`mr-4 ml-4 flex items-baseline space-x-1 ${language === 'en' ? 'space-x-reverse' : ''}`}>
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${textClass}`}
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+            
+            {/* Action Buttons */}
+            <div className="flex items-center gap-3">
+                {/* Theme Toggle */}
+                <button 
+                  onClick={toggleTheme}
+                  className={`p-2 rounded-full transition-colors ${isSolid ? 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300' : 'hover:bg-white/10 text-white'}`}
+                  aria-label="Toggle Theme"
+                >
+                  {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                </button>
+
+                {/* Language Toggle */}
+                <button 
+                  onClick={toggleLanguage}
+                  className={`p-2 rounded-full flex items-center gap-1 font-bold text-xs transition-colors ${isSolid ? 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300' : 'hover:bg-white/10 text-white'}`}
+                  aria-label="Toggle Language"
+                >
+                   <Globe size={18} />
+                   <span>{language === 'ar' ? 'EN' : 'عربي'}</span>
+                </button>
+
+                <a 
+                  href={LINKS.donation}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full font-bold text-sm transition-all transform hover:scale-105 shadow-md ${
+                    isSolid 
+                      ? 'bg-secondary text-white hover:bg-yellow-600' 
+                      : 'bg-white text-primary hover:bg-gray-100'
+                  }`}
+                >
+                  <Heart size={16} className="fill-current" />
+                  <span>{t.nav.donateButton}</span>
+                </a>
+            </div>
+          </div>
+
+          {/* Mobile Controls */}
+          <div className="md:hidden flex items-center gap-3">
+             <button 
+                  onClick={toggleTheme}
+                  className={`p-1.5 rounded-full ${isSolid ? 'text-gray-800 dark:text-gray-200' : 'text-white'}`}
+              >
+                  {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+             <button 
+                  onClick={toggleLanguage}
+                  className={`p-1.5 font-bold text-xs ${isSolid ? 'text-gray-800 dark:text-gray-200' : 'text-white'}`}
+              >
+                  {language === 'ar' ? 'EN' : 'عربي'}
+            </button>
+            
+            <a 
+                href={LINKS.donation}
+                target="_blank"
+                rel="noreferrer"
+                className={`flex items-center gap-1 px-3 py-1.5 rounded-full font-bold text-xs ${
+                  isSolid 
+                    ? 'bg-secondary text-white' 
+                    : 'bg-white text-primary'
+                }`}
+              >
+                <Heart size={12} className="fill-current" />
+                <span>{t.nav.donateButton}</span>
+            </a>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className={`p-2 rounded-md ${isSolid ? 'text-gray-800 dark:text-gray-200' : 'text-white'} hover:bg-opacity-20 hover:bg-white/20 focus:outline-none transition-colors`}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isOpen && (
+        <div className={`md:hidden shadow-xl absolute w-full top-full right-0 border-t flex flex-col animate-in slide-in-from-top-2 duration-200 h-[calc(100vh-64px)] overflow-y-auto ${mobileBgClass}`}>
+          <div className="px-4 pt-2 pb-4 space-y-1">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
+                className={`flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium transition-colors border-b border-gray-50 dark:border-gray-800 last:border-0 ${mobileTextClass}`}
+              >
+                <span className="text-secondary">{link.icon}</span>
+                {link.name}
+              </a>
+            ))}
+             <a
+                href={LINKS.donation}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 block w-full text-center bg-secondary text-white px-3 py-3 rounded-md text-base font-bold hover:bg-yellow-600 transition-colors flex items-center justify-center gap-2"
+              >
+                <Heart size={18} />
+                {t.nav.donate}
+              </a>
+
+              {/* Quick Contact Icons in Mobile Menu */}
+              <div className="flex justify-center items-center gap-4 mt-6 pt-6 border-t border-gray-100 dark:border-gray-800 flex-wrap">
+                  <a 
+                    href={`tel:${CONTACT_INFO.phone}`}
+                    className="flex flex-col items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-secondary transition-colors min-w-[60px]"
+                  >
+                      <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-full text-primary dark:text-secondary">
+                        <Phone size={20} />
+                      </div>
+                      <span className="text-xs font-medium">{t.nav.quickContact}</span>
+                  </a>
+                  <a 
+                    href={CONTACT_INFO.whatsappLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex flex-col items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-green-600 transition-colors min-w-[60px]"
+                  >
+                      <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-full text-green-600">
+                        <MessageCircle size={20} />
+                      </div>
+                      <span className="text-xs font-medium">{t.nav.whatsapp}</span>
+                  </a>
+                  <a 
+                    href={CONTACT_INFO.telegramLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex flex-col items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors min-w-[60px]"
+                  >
+                      <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-full text-blue-500">
+                        <Send size={20} />
+                      </div>
+                      <span className="text-xs font-medium">{t.nav.telegram}</span>
+                  </a>
+                   <a 
+                    href={CONTACT_INFO.youtubeLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex flex-col items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-red-600 transition-colors min-w-[60px]"
+                  >
+                      <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-full text-red-600">
+                        <Youtube size={20} />
+                      </div>
+                      <span className="text-xs font-medium">{t.nav.youtube}</span>
+                  </a>
+                  <a 
+                    href={CONTACT_INFO.mainMapLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex flex-col items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors min-w-[60px]"
+                  >
+                      <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-full text-blue-600">
+                        <MapPin size={20} />
+                      </div>
+                      <span className="text-xs font-medium">{t.nav.location}</span>
+                  </a>
+              </div>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;
