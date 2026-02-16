@@ -20,6 +20,21 @@ const CircleTypes: React.FC = () => {
     }
   };
 
+  const renderAgeRange = (type: typeof CIRCLE_TYPES[0]) => {
+    if (!type.ageRange) return null;
+
+    // Handle "All Ages" / "لكل السنوات" / "الكل" cases
+    if (['correction', 'online', 'general'].includes(type.id)) {
+      return t.circleTypes.allAges;
+    }
+
+    if (type.id === 'adults') {
+      return `${type.ageRange} ${t.circleTypes.above}`;
+    }
+
+    return `${type.ageRange} ${t.circleTypes.years}`;
+  };
+
   return (
     <section id="circle-types" className="py-20 bg-white/90 dark:bg-gray-800/90 transition-colors duration-300 relative overflow-hidden backdrop-blur-sm">
       {/* Decorative background Islamic pattern */}
@@ -47,7 +62,9 @@ const CircleTypes: React.FC = () => {
                 {type.ageRange && (
                   <div className="flex items-center gap-1.5 text-xs font-bold bg-secondary/10 text-secondary px-3 py-1 rounded-full border border-secondary/20">
                      <Clock size={12} />
-                     <span>{t.circleTypes.age}: {type.ageRange} {type.id === 'adults' ? t.circleTypes.above : (type.id === 'general' ? '' : t.circleTypes.years)}</span>
+                     <span>
+                        {t.circleTypes.age}: {renderAgeRange(type)}
+                     </span>
                   </div>
                 )}
               </div>
@@ -76,12 +93,12 @@ const CircleTypes: React.FC = () => {
 
       {/* Details Modal */}
       {selectedType && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedType(null)}></div>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm transition-all">
+          <div className="absolute inset-0" onClick={() => setSelectedType(null)}></div>
           
-          <div className="relative bg-white dark:bg-gray-900 w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
+          <div className="relative bg-white dark:bg-gray-900 w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200 max-h-[90vh] flex flex-col">
             {/* Modal Header */}
-            <div className="relative h-32 bg-primary flex items-center justify-center">
+            <div className="relative h-28 md:h-32 bg-primary flex items-center justify-center shrink-0">
               <button 
                 onClick={() => setSelectedType(null)}
                 className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
@@ -93,7 +110,7 @@ const CircleTypes: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-8">
+            <div className="p-8 overflow-y-auto">
               {/* Site Name inside Read More */}
               <div className="text-center mb-1">
                   <span className="text-xs font-bold text-secondary uppercase tracking-wider">{t.common.siteName}</span>

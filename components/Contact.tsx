@@ -6,7 +6,6 @@ import { useThemeLanguage } from '../context/ThemeLanguageContext';
 const Contact: React.FC = () => {
   const { t } = useThemeLanguage();
 
-  // Custom Icons for Snapchat and TikTok since they might not be in all Lucide versions
   const SnapchatIcon = ({ size = 20 }: { size?: number }) => (
     <svg 
       xmlns="http://www.w3.org/2000/svg" 
@@ -44,15 +43,14 @@ const Contact: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           
-          {/* Column 1: About */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-                <div className="bg-white p-2 rounded-xl h-16 w-16 flex items-center justify-center">
-                    <img 
-                        src="https://i.postimg.cc/wMQPL0GJ/IMG-20260211-081616-(1).png" 
-                        alt="Logo" 
-                        className="w-full h-full object-contain"
-                    />
+            <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-secondary shadow-lg bg-white flex items-center justify-center p-0.5">
+                  <img 
+                    src="https://i.postimg.cc/PJfw2r5n/IMG_20260212_WA0017.jpg" 
+                    alt="شعار مجمع التبيان" 
+                    className="w-full h-full object-cover rounded-full"
+                  />
                 </div>
                 <h3 className="text-2xl font-bold text-secondary">{t.contact.title}</h3>
             </div>
@@ -61,41 +59,50 @@ const Contact: React.FC = () => {
             </p>
           </div>
 
-          {/* Column 2: Quick Contact */}
           <div>
             <h3 className="text-xl font-bold mb-6 border-b border-secondary/30 pb-2 w-fit">{t.contact.contactInfo}</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-4">
-                <Phone className="mt-1 text-secondary shrink-0" size={20} />
+                <div className="p-2 bg-secondary/10 rounded-lg text-secondary">
+                  <Phone size={20} />
+                </div>
                 <div>
                   <span className="block text-xs text-gray-400 dark:text-gray-500">{t.contact.phone}</span>
-                  <a href={`tel:${CONTACT_INFO.phone}`} className="font-semibold hover:text-secondary transition-colors" dir="ltr">
-                    {t.nav.quickContact}
+                  <a 
+                    href={`tel:${CONTACT_INFO.phone}`} 
+                    className="font-bold text-lg hover:text-secondary transition-colors flex items-center gap-2"
+                  >
+                    <span>{t.nav.quickContact}</span>
                   </a>
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <MessageCircle className="mt-1 text-secondary shrink-0" size={20} />
+                <div className="p-2 bg-secondary/10 rounded-lg text-secondary">
+                  <MessageCircle size={20} />
+                </div>
                 <div>
                   <span className="block text-xs text-gray-400 dark:text-gray-500">{t.contact.whatsapp}</span>
-                  <a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noreferrer" className="font-semibold hover:text-secondary transition-colors" dir="ltr">
-                    {t.contact.whatsapp}
+                  <a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noreferrer" className="font-semibold hover:text-secondary transition-colors">
+                    {t.nav.whatsapp}
                   </a>
                 </div>
               </li>
                <li className="flex items-start gap-4">
-                <Send className="mt-1 text-secondary shrink-0" size={20} />
+                <div className="p-2 bg-secondary/10 rounded-lg text-secondary">
+                  <Send size={20} />
+                </div>
                 <div>
                   <span className="block text-xs text-gray-400 dark:text-gray-500">{t.contact.telegram}</span>
-                  <a href={CONTACT_INFO.telegramLink} target="_blank" rel="noreferrer" className="font-semibold hover:text-secondary transition-colors" dir="ltr">
-                    {t.contact.telegram}
+                  <a href={CONTACT_INFO.telegramLink} target="_blank" rel="noreferrer" className="font-semibold hover:text-secondary transition-colors">
+                    {t.nav.telegram}
                   </a>
                 </div>
               </li>
               
-              {/* Social Media Links */}
               <li className="flex items-start gap-4">
-                <Instagram className="mt-1 text-secondary shrink-0" size={20} />
+                <div className="p-2 bg-secondary/10 rounded-lg text-secondary">
+                  <Instagram size={20} />
+                </div>
                 <div>
                    <span className="block text-xs text-gray-400 dark:text-gray-500">{t.contact.instagram}</span>
                    <a href={CONTACT_INFO.instagramLink} target="_blank" rel="noreferrer" className="font-semibold hover:text-secondary transition-colors">
@@ -104,18 +111,22 @@ const Contact: React.FC = () => {
                 </div>
               </li>
                <li className="flex items-start gap-4">
-                <SnapchatIcon size={20} />
-                <div className="-mt-1">
-                   <span className="block text-xs text-gray-400 dark:text-gray-500 mt-1">{t.contact.snapchat}</span>
+                <div className="p-2 bg-secondary/10 rounded-lg text-secondary">
+                  <SnapchatIcon size={20} />
+                </div>
+                <div>
+                   <span className="block text-xs text-gray-400 dark:text-gray-500">{t.contact.snapchat}</span>
                    <a href={CONTACT_INFO.snapchatLink} target="_blank" rel="noreferrer" className="font-semibold hover:text-secondary transition-colors">
                     {t.contact.snapchat}
                   </a>
                 </div>
               </li>
                <li className="flex items-start gap-4">
-                <TikTokIcon size={20} />
-                 <div className="-mt-1">
-                   <span className="block text-xs text-gray-400 dark:text-gray-500 mt-1">{t.contact.tiktok}</span>
+                <div className="p-2 bg-secondary/10 rounded-lg text-secondary">
+                  <TikTokIcon size={20} />
+                </div>
+                 <div>
+                   <span className="block text-xs text-gray-400 dark:text-gray-500">{t.contact.tiktok}</span>
                    <a href={CONTACT_INFO.tiktokLink} target="_blank" rel="noreferrer" className="font-semibold hover:text-secondary transition-colors">
                     {t.contact.tiktok}
                   </a>
@@ -123,7 +134,9 @@ const Contact: React.FC = () => {
               </li>
 
               <li className="flex items-start gap-4">
-                <Youtube className="mt-1 text-secondary shrink-0" size={20} />
+                <div className="p-2 bg-secondary/10 rounded-lg text-secondary">
+                  <Youtube size={20} />
+                </div>
                 <div>
                   <span className="block text-xs text-gray-400 dark:text-gray-500">{t.contact.youtube}</span>
                   <a href={CONTACT_INFO.youtubeLink} target="_blank" rel="noreferrer" className="font-semibold hover:text-secondary transition-colors">
@@ -134,9 +147,7 @@ const Contact: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 3: Location Map (Iframe or Link) */}
           <div className="rounded-xl overflow-hidden shadow-2xl border-2 border-white/20 dark:border-gray-800 h-64 relative group">
-             {/* Using a static placeholder image for map visual, wrapped in link */}
             <a href={CONTACT_INFO.mainMapLink} target="_blank" rel="noreferrer" className="block w-full h-full relative">
                 <div className="absolute inset-0 flex items-center justify-center bg-black/50 group-hover:bg-black/30 transition-colors z-10">
                     <div className="bg-white text-gray-900 px-4 py-2 rounded-full font-bold flex items-center gap-2 transform group-hover:scale-110 transition-transform">
@@ -155,7 +166,6 @@ const Contact: React.FC = () => {
         </div>
       </div>
 
-      {/* Bottom Footer */}
       <div className="border-t border-white/10 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 gap-4">
           <p>© {new Date().getFullYear()} {t.common.siteName}. {t.contact.rights}</p>

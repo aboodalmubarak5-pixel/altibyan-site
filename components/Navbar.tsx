@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Heart, Phone, MessageCircle, Home, Info, BarChart3, MapPin, Youtube, Send, Moon, Sun, Globe, Megaphone, Music, LayoutGrid } from 'lucide-react';
-import { LINKS, CONTACT_INFO } from '../constants';
+import { Menu, X, Heart, Phone, Home, Info, BarChart3, MapPin, Moon, Sun, Globe, Megaphone, Music, LayoutGrid } from 'lucide-react';
+import { LINKS } from '../constants';
 import { useThemeLanguage } from '../context/ThemeLanguageContext';
 
 const Navbar: React.FC = () => {
@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
 
     const element = document.querySelector(href);
     if (element) {
-      const headerOffset = 80;
+      const headerOffset = 100;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
@@ -50,10 +50,8 @@ const Navbar: React.FC = () => {
     }
   };
 
-  // Determine if navbar should look solid
   const isSolid = scrolled || isOpen;
 
-  // Classes for text based on state
   const textClass = isSolid 
     ? 'text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-secondary' 
     : 'text-white hover:bg-white/10';
@@ -62,18 +60,22 @@ const Navbar: React.FC = () => {
   const mobileTextClass = 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800';
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isSolid ? 'bg-white dark:bg-gray-900 shadow-lg py-2' : 'bg-transparent py-4'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isSolid ? 'bg-white dark:bg-gray-900 shadow-lg py-1' : 'bg-transparent py-4'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20 md:h-24 transition-all duration-300">
           <div className="flex-shrink-0 flex items-center gap-3">
-             <img 
-                src="https://i.postimg.cc/wMQPL0GJ/IMG-20260211-081616-(1).png" 
-                alt={t.common.siteName} 
-                className="h-14 w-auto object-contain drop-shadow-md"
-              />
+             <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-secondary shadow-md bg-white flex items-center justify-center p-0.5 transform hover:scale-110 transition-transform duration-300">
+                <img 
+                  src="https://i.postimg.cc/PJfw2r5n/IMG_20260212_WA0017.jpg" 
+                  alt="شعار مجمع التبيان" 
+                  className="w-full h-full object-cover rounded-full"
+                />
+             </div>
+             <div className={`text-xl font-bold tracking-tight transition-colors duration-300 ${isSolid ? 'text-primary' : 'text-white'}`}>
+                {t.common.siteName}
+             </div>
           </div>
           
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-2">
             <div className={`mr-4 ml-4 flex items-baseline space-x-1 ${language === 'en' ? 'space-x-reverse' : ''}`}>
               {navLinks.map((link) => (
@@ -88,9 +90,7 @@ const Navbar: React.FC = () => {
               ))}
             </div>
             
-            {/* Action Buttons */}
             <div className="flex items-center gap-3">
-                {/* Theme Toggle */}
                 <button 
                   onClick={toggleTheme}
                   className={`p-2 rounded-full transition-colors ${isSolid ? 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300' : 'hover:bg-white/10 text-white'}`}
@@ -99,7 +99,6 @@ const Navbar: React.FC = () => {
                   {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                 </button>
 
-                {/* Language Toggle */}
                 <button 
                   onClick={toggleLanguage}
                   className={`p-2 rounded-full flex items-center gap-1 font-bold text-xs transition-colors ${isSolid ? 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300' : 'hover:bg-white/10 text-white'}`}
@@ -125,7 +124,6 @@ const Navbar: React.FC = () => {
             </div>
           </div>
 
-          {/* Mobile Controls */}
           <div className="md:hidden flex items-center gap-3">
              <button 
                   onClick={toggleTheme}
@@ -139,20 +137,6 @@ const Navbar: React.FC = () => {
               >
                   {language === 'ar' ? 'EN' : 'عربي'}
             </button>
-            
-            <a 
-                href={LINKS.donation}
-                target="_blank"
-                rel="noreferrer"
-                className={`flex items-center gap-1 px-3 py-1.5 rounded-full font-bold text-xs ${
-                  isSolid 
-                    ? 'bg-secondary text-white' 
-                    : 'bg-white text-primary'
-                }`}
-              >
-                <Heart size={12} className="fill-current" />
-                <span>{t.nav.donateButton}</span>
-            </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`p-2 rounded-md ${isSolid ? 'text-gray-800 dark:text-gray-200' : 'text-white'} hover:bg-opacity-20 hover:bg-white/20 focus:outline-none transition-colors`}
@@ -164,9 +148,8 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className={`md:hidden shadow-xl absolute w-full top-full right-0 border-t flex flex-col animate-in slide-in-from-top-2 duration-200 h-[calc(100vh-64px)] overflow-y-auto ${mobileBgClass}`}>
+        <div className={`md:hidden shadow-xl absolute w-full top-full right-0 border-t flex flex-col animate-in slide-in-from-top-2 duration-200 h-[calc(100vh-80px)] overflow-y-auto ${mobileBgClass}`}>
           <div className="px-4 pt-2 pb-4 space-y-1">
             {navLinks.map((link) => (
               <a
@@ -188,63 +171,6 @@ const Navbar: React.FC = () => {
                 <Heart size={18} />
                 {t.nav.donate}
               </a>
-
-              {/* Quick Contact Icons in Mobile Menu */}
-              <div className="flex justify-center items-center gap-4 mt-6 pt-6 border-t border-gray-100 dark:border-gray-800 flex-wrap">
-                  <a 
-                    href={`tel:${CONTACT_INFO.phone}`}
-                    className="flex flex-col items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-secondary transition-colors min-w-[60px]"
-                  >
-                      <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-full text-primary dark:text-secondary">
-                        <Phone size={20} />
-                      </div>
-                      <span className="text-xs font-medium">{t.nav.quickContact}</span>
-                  </a>
-                  <a 
-                    href={CONTACT_INFO.whatsappLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex flex-col items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-green-600 transition-colors min-w-[60px]"
-                  >
-                      <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-full text-green-600">
-                        <MessageCircle size={20} />
-                      </div>
-                      <span className="text-xs font-medium">{t.nav.whatsapp}</span>
-                  </a>
-                  <a 
-                    href={CONTACT_INFO.telegramLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex flex-col items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors min-w-[60px]"
-                  >
-                      <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-full text-blue-500">
-                        <Send size={20} />
-                      </div>
-                      <span className="text-xs font-medium">{t.nav.telegram}</span>
-                  </a>
-                   <a 
-                    href={CONTACT_INFO.youtubeLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex flex-col items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-red-600 transition-colors min-w-[60px]"
-                  >
-                      <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-full text-red-600">
-                        <Youtube size={20} />
-                      </div>
-                      <span className="text-xs font-medium">{t.nav.youtube}</span>
-                  </a>
-                  <a 
-                    href={CONTACT_INFO.mainMapLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex flex-col items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors min-w-[60px]"
-                  >
-                      <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-full text-blue-600">
-                        <MapPin size={20} />
-                      </div>
-                      <span className="text-xs font-medium">{t.nav.location}</span>
-                  </a>
-              </div>
           </div>
         </div>
       )}

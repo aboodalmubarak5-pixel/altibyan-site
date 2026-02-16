@@ -8,7 +8,6 @@ const Hero: React.FC = () => {
 
   return (
     <div id="hero" className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-      {/* Background Image overlay with gradient */}
       <div 
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{ 
@@ -20,28 +19,28 @@ const Hero: React.FC = () => {
 
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto flex flex-col items-center">
         
-        <div className="mb-6 p-4 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-2xl animate-in zoom-in duration-500">
+        <div className="mb-8 relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden border-4 border-secondary shadow-2xl bg-white animate-in zoom-in duration-700 flex items-center justify-center p-1">
            <img 
-             src="https://i.postimg.cc/wMQPL0GJ/IMG-20260211-081616-(1).png" 
-             alt="Logo" 
-             className="w-24 h-24 sm:w-32 sm:h-32 object-contain"
+             src="https://i.postimg.cc/PJfw2r5n/IMG_20260212_WA0017.jpg" 
+             alt="شعار مجمع التبيان" 
+             className="w-full h-full object-cover rounded-full"
            />
         </div>
 
-        <h1 className="text-4xl sm:text-6xl font-extrabold text-white mb-6 tracking-tight drop-shadow-md">
+        <h1 className="text-4xl sm:text-7xl font-extrabold text-white mb-8 tracking-tight drop-shadow-lg animate-in slide-in-from-bottom-5 duration-700">
           {t.hero.title}
         </h1>
         
-        <p className="text-xl sm:text-2xl text-gray-100 mb-12 max-w-2xl font-medium leading-relaxed">
+        <p className="text-xl sm:text-2xl text-gray-100 mb-12 max-w-3xl font-medium leading-relaxed animate-in slide-in-from-bottom-10 duration-1000">
           {t.hero.subtitle}
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-5 w-full justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-5 w-full justify-center items-center animate-in slide-in-from-bottom-20 duration-1000">
             <a 
                 href={LINKS.registration}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full sm:w-auto bg-secondary text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-yellow-600 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto bg-secondary text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-yellow-600 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2"
             >
                 <span>{t.hero.register}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${dir === 'rtl' ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
@@ -53,7 +52,7 @@ const Hero: React.FC = () => {
                 href={LINKS.donation}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full sm:w-auto bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-primary transition duration-300 shadow-lg flex items-center justify-center gap-2 group"
+                className="w-full sm:w-auto bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-white hover:text-primary transition duration-300 shadow-lg flex items-center justify-center gap-2 group"
             >
                 <Heart className="group-hover:text-red-500 transition-colors" size={20} />
                 <span>{t.hero.donate}</span>
@@ -61,7 +60,6 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* Decorative Islamic Pattern Overlay */}
       <div className="absolute inset-0 opacity-10 pointer-events-none" 
            style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}>
       </div>

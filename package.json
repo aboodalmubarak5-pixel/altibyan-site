@@ -1,5 +1,5 @@
 {
-  "name": "copy-of-مجمع-التبيان-المركزي-النسخة-الخامسة",
+  "name": "copy-of-مجمع-التبيان-المركزي-النسخة-التاسعة",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,7 +12,7 @@
     "react-dom": "18.3.1",
     "react": "18.3.1",
     "lucide-react": "0.344.0",
-    "@google/generative-ai": "^0.17.0"
+    "@google/genai": "0.1.1"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

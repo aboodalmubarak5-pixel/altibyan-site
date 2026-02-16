@@ -122,14 +122,14 @@ const Advertisements: React.FC = () => {
 
       {/* Ad Details Modal */}
       {selectedAd && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={() => setSelectedAd(null)}></div>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/70 backdrop-blur-sm transition-all">
+          <div className="absolute inset-0" onClick={() => setSelectedAd(null)}></div>
           
           <div className="relative bg-white dark:bg-gray-900 w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden animate-in slide-in-from-bottom-10 duration-300 flex flex-col max-h-[90vh]">
             {/* Close Button */}
             <button 
               onClick={() => setSelectedAd(null)}
-              className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+              className="absolute top-4 right-4 z-20 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
             >
               <X size={24} />
             </button>

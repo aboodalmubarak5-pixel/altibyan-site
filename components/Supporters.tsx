@@ -14,10 +14,10 @@ const Supporters: React.FC = () => {
         <img 
           src="https://i.postimg.cc/Pr69Rprb/شعار_الجمعية.png" 
           alt="شعار الجمعية" 
-          className="w-24 h-auto object-contain" 
+          className="w-full h-full object-contain p-4" 
         />
       ),
-      color: "text-primary dark:text-secondary",
+      color: "border-secondary/30",
       link: "https://maknon.org.sa/"
     }
   ];
@@ -40,11 +40,13 @@ const Supporters: React.FC = () => {
               href={supporter.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center justify-center p-8 bg-gray-50 dark:bg-gray-700/50 rounded-2xl border border-gray-100 dark:border-gray-700 hover:bg-white dark:hover:bg-gray-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 w-full max-w-md text-center cursor-pointer decoration-0"
+              className="group flex flex-col items-center justify-center p-8 bg-gray-50 dark:bg-gray-700/50 rounded-3xl border border-gray-100 dark:border-gray-700 hover:bg-white dark:hover:bg-gray-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 w-full max-w-md text-center cursor-pointer decoration-0"
             >
-              <div className={`mb-6 opacity-80 group-hover:opacity-100 transition-opacity duration-300 ${supporter.color} bg-white dark:bg-gray-800 p-5 rounded-full shadow-md group-hover:scale-110 transform transition-transform`}>
+              {/* Circular Logo Container */}
+              <div className={`mb-6 relative w-32 h-32 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full border-4 ${supporter.color} shadow-lg group-hover:scale-110 group-hover:border-secondary transition-all duration-300 overflow-hidden`}>
                 {supporter.icon}
               </div>
+              
               <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-primary dark:group-hover:text-secondary transition-colors">
                 {supporter.name}
               </h3>

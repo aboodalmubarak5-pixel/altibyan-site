@@ -16,18 +16,19 @@ export const CONTACT_INFO = {
 
 export const LINKS = {
   registration: "https://docs.google.com/forms/d/1k9hEO1o-_NuRGmxUP7Yl5CcERDZK72t7cUhb6EoXNXI/viewform?edit_requested=true&pli=1",
-  donation: "https://store.maknon.org.sa/BQrXGa"
+  donation: "https://store.maknon.org.sa/BQrXGa",
+  achievements: "https://forms.gle/xt9yrtq9GZg61MWx6"
 };
 
 export const STATISTICS_DATA = [
   { id: 1, label: "طالباً", value: 520, key: "students" },
-  { id: 2, label: "معلماً", value: 33, key: "teachers" },
-  { id: 3, label: "إدارياً", value: 22, key: "admins" },
-  { id: 4, label: "مسجد", value: 10, key: "mosques" },
-  { id: 5, label: "حلقة قرآنية", value: 27, key: "circles" },
-  { id: 6, label: "خاتماً", value: 20, key: "khatmeen" },
-  { id: 7, label: "مجازاً", value: 12, key: "certified" },
-  { id: 8, label: "مقارئ", value: 6, key: "maqari" },
+  { id: 2, label: "معلماً", value: 27, key: "teachers" },
+  { id: 3, label: "معلماً مجازاً", value: 23, key: "certified" },
+  { id: 4, label: "إدارياً", value: 22, key: "admins" },
+  { id: 5, label: "مسجد", value: 10, key: "mosques" },
+  { id: 6, label: "حلقة قرآنية", value: 40, key: "circles" },
+  { id: 7, label: "خاتماً", value: 28, key: "khatmeen" },
+  { id: 8, label: "مقارئ", value: 7, key: "maqari" },
   { id: 9, label: "طفلاً في برنامج نور البيان", value: 85, key: "noor" },
 ];
 
@@ -56,6 +57,16 @@ export const CIRCLE_TYPES = [
     id: 'adults',
     ageRange: '18+',
     iconName: 'Briefcase'
+  },
+  {
+    id: 'correction',
+    ageRange: 'لكل السنوات',
+    iconName: 'CheckCircle2'
+  },
+  {
+    id: 'online',
+    ageRange: 'لكل السنوات',
+    iconName: 'Globe'
   },
   {
     id: 'maqari',
