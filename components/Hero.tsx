@@ -11,15 +11,15 @@ const Hero: React.FC = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{ 
-          backgroundImage: 'url("https://images.unsplash.com/photo-1596522354195-e84ae3c9878f?q=80&w=2000&auto=format&fit=crop")',
+          backgroundImage: 'url("https://i.postimg.cc/bNSjSLw5/IMG-20260217-WA0000.jpg")',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/95 via-primary/80 to-primary/90 mix-blend-multiply dark:from-gray-900/95 dark:via-gray-900/80 dark:to-gray-900/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary/95 via-secondary/80 to-secondary/90 mix-blend-multiply dark:from-gray-900/95 dark:via-gray-900/80 dark:to-gray-900/90" />
       </div>
 
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto flex flex-col items-center">
         
-        <div className="mb-8 relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden border-4 border-secondary shadow-2xl bg-white animate-in zoom-in duration-700 flex items-center justify-center p-1">
+        <div className="mb-8 relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden shadow-2xl bg-white animate-in zoom-in duration-700 flex items-center justify-center p-0">
            <img 
              src="https://i.postimg.cc/PJfw2r5n/IMG_20260212_WA0017.jpg" 
              alt="شعار مجمع التبيان" 
@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
                 href={LINKS.registration}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full sm:w-auto bg-secondary text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-yellow-600 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto bg-primary text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-primary/90 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2"
             >
                 <span>{t.hero.register}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${dir === 'rtl' ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
                 href={LINKS.donation}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full sm:w-auto bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-white hover:text-primary transition duration-300 shadow-lg flex items-center justify-center gap-2 group"
+                className="w-full sm:w-auto bg-accent text-primary px-12 py-5 rounded-full font-bold text-lg hover:bg-secondary hover:text-white transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2 group"
             >
                 <Heart className="group-hover:text-red-500 transition-colors" size={20} />
                 <span>{t.hero.donate}</span>

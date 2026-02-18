@@ -178,9 +178,9 @@ const About: React.FC = () => {
                      {t.about.mainLocation}
                   </div>
                   <h3 className="text-3xl md:text-4xl font-bold mb-5">{t.about.mainMosque}</h3>
-                  <div className="relative p-6 bg-white/10 backdrop-blur-sm rounded-2xl border-l-4 border-secondary italic">
+                  <div className="relative p-6 bg-white/10 backdrop-blur-sm rounded-2xl border-l-4 border-secondary">
                     <p className={`font-normal leading-relaxed ${
-                      isAr ? 'text-2xl md:text-3xl font-uthmanic' : 'text-xl md:text-2xl font-quran'
+                      isAr ? 'text-3xl md:text-4xl font-quran' : 'text-xl md:text-2xl font-quran'
                     }`}>
                       "{t.about.quote}"
                     </p>

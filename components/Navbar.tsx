@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20 md:h-24 transition-all duration-300">
           <div className="flex-shrink-0 flex items-center gap-3">
-             <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-secondary shadow-md bg-white flex items-center justify-center p-0.5 transform hover:scale-110 transition-transform duration-300">
+             <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden shadow-md bg-white flex items-center justify-center p-0 transform hover:scale-110 transition-transform duration-300">
                 <img 
                   src="https://i.postimg.cc/PJfw2r5n/IMG_20260212_WA0017.jpg" 
                   alt="شعار مجمع التبيان" 

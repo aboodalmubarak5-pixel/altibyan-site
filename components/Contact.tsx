@@ -45,7 +45,7 @@ const Contact: React.FC = () => {
           
           <div>
             <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-secondary shadow-lg bg-white flex items-center justify-center p-0.5">
+                <div className="w-16 h-16 rounded-full overflow-hidden shadow-lg bg-white flex items-center justify-center p-0">
                   <img 
                     src="https://i.postimg.cc/PJfw2r5n/IMG_20260212_WA0017.jpg" 
                     alt="شعار مجمع التبيان" 
