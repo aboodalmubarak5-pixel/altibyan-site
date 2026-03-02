@@ -8,10 +8,13 @@ export const CONTACT_INFO = {
   telegramLink: "https://t.me/+966583089932",
   locationName: "الرياض - حي الخليج - جامع سلمان الفارسي",
   mainMapLink: "https://maps.app.goo.gl/KbQnsK6YeNpbfXmv8",
-  youtubeLink: "https://youtube.com/channel/UChbNb4z-rVjAXAl8qINIpgg?si=IrvJZbpD31aExOUX",
-  instagramLink: "https://instagram.com",
-  snapchatLink: "https://snapchat.com",
-  tiktokLink: "https://tiktok.com"
+  youtubeLink: "https://www.youtube.com/@%D9%85%D8%AC%D9%85%D8%B9-%D8%A7%D9%84%D8%AA%D8%A8%D9%8A%D8%A7%D9%86-%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D9%8A",
+  instagramLink: "https://www.instagram.com/altebyan.sa?igsh=ZWRtd2xpdGd1Ymhy",
+  snapchatLink: "https://www.snapchat.com/@altebyan_sa?share_id=5VwnJLyH0MI&locale=ar-AA",
+  tiktokLink: "https://www.tiktok.com/@altebyan.sa",
+  facebookLink: "https://www.facebook.com/profile.php?id=61588516565275",
+  twitterLink: "https://x.com/altebyan_",
+  linkedinLink: "https://tr.ee/pu-auw4jih"
 };
 
 export const LINKS = {
@@ -78,4 +81,12 @@ export const CIRCLE_TYPES = [
     ageRange: 'الكل',
     iconName: 'Users'
   }
+];
+
+export const NEWS_ITEMS = [
+  "دورة التبيان الرمضانية السابعة (1447هـ): فروع متنوعة وجوائز متميزة",
+  "انطلاق التسجيل للفصل الدراسي الجديد في جميع حلقات المجمع",
+  "مشروع تصحيح تلاوة سورة الفاتحة وقصار السور (مفتوح الآن)",
+  "مشروع تصحيح التلاوة للجاليات (Urdu): انطلاق التسجيل للناطقين بغير العربية",
+  "التقرير النصفي للدورة الرمضانية السابعة لعام 1447هـ"
 ];

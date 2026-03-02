@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
   const { t, dir } = useThemeLanguage();
 
   return (
-    <div id="hero" className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+    <div id="hero" className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden pt-32 md:pt-40">
       <div 
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{ 

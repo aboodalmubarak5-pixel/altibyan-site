@@ -213,6 +213,9 @@ export const translations: Record<Language, Translation> = {
       instagram: 'انستغرام',
       snapchat: 'سناب شات',
       tiktok: 'تيك توك',
+      facebook: 'فيسبوك',
+      twitter: 'تويتر (X)',
+      linkedin: 'لينكد إن',
     },
     assistant: {
       placeholder: 'اكتب استفسارك...',
@@ -296,13 +299,44 @@ export const translations: Record<Language, Translation> = {
       },
       {
         id: 3,
-        title: "قريباً: افتتاح حلقة للجاليات",
-        description: "نسعى لإيصال نور القرآن لكل مسلم. نعلن عن قرب افتتاح حلقة مخصصة للجاليات (الناطقين بغير العربية).",
-        date: "قريباً",
-        image: "https://i.postimg.cc/fTQb03nx/qryba.png",
+        title: "مشروع تصحيح التلاوة للجاليات (Urdu)",
+        description: "انطلاق التسجيل في مشروع تصحيح التلاوة للجاليات (الناطقين بغير العربية) لضبط تلاوة الفاتحة وقصار السور.",
+        date: "٢٤ شعبان 1447",
+        image: "https://i.postimg.cc/dVFVQDdH/IMG_20260215_WA0032.jpg",
+        link: "https://docs.google.com/forms/d/e/1FAIpQLSddwavhFd5qyS6bkVGXIEcPIaMpsVRVKaHnFpslBe3FhBF1dg/viewform?fbzx=1838715781690917317",
         details: {
           sections: [
-            { title: "أهداف الحلقة", items: ["تصحيح التلاوة", "تعليم مبادئ التجويد", "دروس إيمانية مبسطة"] }
+            { 
+              title: "پروگرام کی تفصیلات (Urdu)", 
+              items: [
+                "قرآن مجید کی تلاوت درست کرنے کا منصوبہ (غیر ملکیوں کے لیے)",
+                "سورہ فاتحہ اور چھوٹی سورتوں کی صحیح تلاوت سیکھنا۔",
+                "ماہر اساتذہ کی نگرانی میں آن لائن کلاسز۔",
+                "رجسٹریشن کے لیے لنک پر کلک کریں۔"
+              ] 
+            },
+            {
+              title: "أهداف المشروع",
+              items: [
+                "تصحيح تلاوة سورة الفاتحة.",
+                "ضبط مخارج الحروف في قصار السور.",
+                "تعليم مبادئ التجويد الأساسية.",
+                "دروس إيمانية ميسرة."
+              ]
+            }
+          ]
+        }
+      },
+      {
+        id: 4,
+        title: "التقرير النصفي للدورة الرمضانية السابعة",
+        description: "يسر مجمع التبيان المركزي أن يقدم لكم التقرير النصفي لإنجازات الدورة الرمضانية السابعة لعام 1447هـ.",
+        date: "١٠ رمضان 1447",
+        image: "https://i.postimg.cc/5ymDWFpX/3f332618-2d49-4ee8-a09e-52e29ecb924b.jpg",
+        details: {
+          sections: [
+            { title: "إحصائيات الدورة", items: ["عدد الطلاب المشاركين", "عدد الحلقات المفعلة", "نسبة الإنجاز في الحفظ", "البرامج المصاحبة المنفذة"] },
+            { title: "أبرز الإنجازات", items: ["ختمات قرآنية", "تميز في الأداء", "تفاعل مجتمعي كبير"] }
           ]
         }
       }
@@ -507,6 +541,9 @@ export const translations: Record<Language, Translation> = {
       instagram: 'Instagram',
       snapchat: 'Snapchat',
       tiktok: 'TikTok',
+      facebook: 'Facebook',
+      twitter: 'Twitter (X)',
+      linkedin: 'LinkedIn',
     },
     assistant: {
       placeholder: 'Type your inquiry...',
@@ -590,13 +627,44 @@ export const translations: Record<Language, Translation> = {
       },
       {
         id: 3,
-        title: "Coming Soon: Expatriates Circle",
-        description: "Opening soon! A circle dedicated to non-Arabic speakers to spread the light of Quran to every Muslim.",
-        date: "Coming Soon",
-        image: "https://i.postimg.cc/fTQb03nx/qryba.png",
+        title: "Recitation Correction Project (Urdu)",
+        description: "Registration is now open for the Recitation Correction Project for non-Arabic speakers to perfect Al-Fatiha and short Surahs.",
+        date: "24 Sha'ban 1447",
+        image: "https://i.postimg.cc/dVFVQDdH/IMG_20260215_WA0032.jpg",
+        link: "https://docs.google.com/forms/d/e/1FAIpQLSddwavhFd5qyS6bkVGXIEcPIaMpsVRVKaHnFpslBe3FhBF1dg/viewform?fbzx=1838715781690917317",
         details: {
           sections: [
-            { title: "Objectives", items: ["Recitation correction", "Basic Tajweed", "Faith lessons"] }
+            { 
+              title: "Program Details (Urdu)", 
+              items: [
+                "Recitation Correction Project for Non-Arabic Speakers.",
+                "Perfecting Al-Fatiha and short Surahs.",
+                "Online classes under the supervision of expert teachers.",
+                "Click the link below to register."
+              ] 
+            },
+            {
+              title: "Objectives",
+              items: [
+                "Correcting Al-Fatiha recitation.",
+                "Mastering letter exits in short Surahs.",
+                "Teaching basic Tajweed principles.",
+                "Simplified faith lessons."
+              ]
+            }
+          ]
+        }
+      },
+      {
+        id: 4,
+        title: "Mid-term Report for the 7th Ramadan Course",
+        description: "Al-Tibyan Central Complex is pleased to present the mid-term report for the achievements of the 7th Ramadan Course for the year 1447 AH.",
+        date: "10 Ramadan 1447",
+        image: "https://i.postimg.cc/5ymDWFpX/3f332618-2d49-4ee8-a09e-52e29ecb924b.jpg",
+        details: {
+          sections: [
+            { title: "Course Statistics", items: ["Number of participating students", "Number of active circles", "Memorization achievement rate", "Implemented accompanying programs"] },
+            { title: "Key Achievements", items: ["Quranic completions", "Excellence in performance", "Great community interaction"] }
           ]
         }
       }

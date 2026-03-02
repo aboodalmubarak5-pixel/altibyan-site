@@ -3,18 +3,13 @@ import { Menu, X, Heart, Phone, Home, Info, BarChart3, MapPin, Moon, Sun, Globe,
 import { LINKS } from '../constants';
 import { useThemeLanguage } from '../context/ThemeLanguageContext';
 
-const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const { theme, toggleTheme, language, toggleLanguage, t } = useThemeLanguage();
+interface NavbarProps {
+  isScrolled: boolean;
+}
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+const Navbar: React.FC<NavbarProps> = ({ isScrolled: parentScrolled }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const { theme, toggleTheme, language, toggleLanguage, t } = useThemeLanguage();
 
   const navLinks = [
     { name: t.nav.home, href: '#hero', icon: <Home size={18} /> },
@@ -50,7 +45,7 @@ const Navbar: React.FC = () => {
     }
   };
 
-  const isSolid = scrolled || isOpen;
+  const isSolid = parentScrolled || isOpen;
 
   const textClass = isSolid 
     ? 'text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-secondary' 
@@ -60,7 +55,7 @@ const Navbar: React.FC = () => {
   const mobileTextClass = 'text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800';
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isSolid ? 'bg-white dark:bg-gray-900 shadow-lg py-1' : 'bg-transparent py-4'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isSolid ? 'bg-white dark:bg-gray-900 shadow-lg py-1 top-0' : 'bg-transparent py-4 top-12 md:top-14'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20 md:h-24 transition-all duration-300">
           <div className="flex-shrink-0 flex items-center gap-3">

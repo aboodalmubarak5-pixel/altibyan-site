@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, MapPin, MessageCircle, Youtube, Send, Instagram } from 'lucide-react';
+import { Phone, MapPin, MessageCircle, Youtube, Send, Instagram, Facebook, Twitter, Linkedin } from 'lucide-react';
 import { CONTACT_INFO } from '../constants';
 import { useThemeLanguage } from '../context/ThemeLanguageContext';
 
@@ -38,6 +38,18 @@ const Contact: React.FC = () => {
     </svg>
   );
 
+  const socialLinks = [
+    { icon: <Instagram size={20} />, label: t.contact.instagram, link: CONTACT_INFO.instagramLink, aria: "Instagram" },
+    { icon: <SnapchatIcon size={20} />, label: t.contact.snapchat, link: CONTACT_INFO.snapchatLink, aria: "Snapchat" },
+    { icon: <TikTokIcon size={20} />, label: t.contact.tiktok, link: CONTACT_INFO.tiktokLink, aria: "TikTok" },
+    { icon: <Youtube size={20} />, label: t.contact.youtube, link: CONTACT_INFO.youtubeLink, aria: "Youtube" },
+    { icon: <Facebook size={20} />, label: t.contact.facebook, link: CONTACT_INFO.facebookLink, aria: "Facebook" },
+    { icon: <Twitter size={20} />, label: t.contact.twitter, link: CONTACT_INFO.twitterLink, aria: "Twitter" },
+    { icon: <Linkedin size={20} />, label: t.contact.linkedin, link: CONTACT_INFO.linkedinLink, aria: "LinkedIn" },
+    { icon: <MessageCircle size={20} />, label: t.nav.whatsapp, link: CONTACT_INFO.whatsappLink, aria: "Whatsapp" },
+    { icon: <Send size={20} />, label: t.nav.telegram, link: CONTACT_INFO.telegramLink, aria: "Telegram" },
+  ];
+
   return (
     <footer id="contact" className="bg-primary dark:bg-gray-950 text-white transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -61,8 +73,8 @@ const Contact: React.FC = () => {
 
           <div>
             <h3 className="text-xl font-bold mb-6 border-b border-secondary/30 pb-2 w-fit">{t.contact.contactInfo}</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-4">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <li className="flex items-start gap-4 col-span-full">
                 <div className="p-2 bg-secondary/10 rounded-lg text-secondary">
                   <Phone size={20} />
                 </div>
@@ -76,74 +88,20 @@ const Contact: React.FC = () => {
                   </a>
                 </div>
               </li>
-              <li className="flex items-start gap-4">
-                <div className="p-2 bg-secondary/10 rounded-lg text-secondary">
-                  <MessageCircle size={20} />
-                </div>
-                <div>
-                  <span className="block text-xs text-gray-400 dark:text-gray-500">{t.contact.whatsapp}</span>
-                  <a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noreferrer" className="font-semibold hover:text-secondary transition-colors">
-                    {t.nav.whatsapp}
-                  </a>
-                </div>
-              </li>
-               <li className="flex items-start gap-4">
-                <div className="p-2 bg-secondary/10 rounded-lg text-secondary">
-                  <Send size={20} />
-                </div>
-                <div>
-                  <span className="block text-xs text-gray-400 dark:text-gray-500">{t.contact.telegram}</span>
-                  <a href={CONTACT_INFO.telegramLink} target="_blank" rel="noreferrer" className="font-semibold hover:text-secondary transition-colors">
-                    {t.nav.telegram}
-                  </a>
-                </div>
-              </li>
               
-              <li className="flex items-start gap-4">
-                <div className="p-2 bg-secondary/10 rounded-lg text-secondary">
-                  <Instagram size={20} />
-                </div>
-                <div>
-                   <span className="block text-xs text-gray-400 dark:text-gray-500">{t.contact.instagram}</span>
-                   <a href={CONTACT_INFO.instagramLink} target="_blank" rel="noreferrer" className="font-semibold hover:text-secondary transition-colors">
-                    {t.contact.instagram}
-                  </a>
-                </div>
-              </li>
-               <li className="flex items-start gap-4">
-                <div className="p-2 bg-secondary/10 rounded-lg text-secondary">
-                  <SnapchatIcon size={20} />
-                </div>
-                <div>
-                   <span className="block text-xs text-gray-400 dark:text-gray-500">{t.contact.snapchat}</span>
-                   <a href={CONTACT_INFO.snapchatLink} target="_blank" rel="noreferrer" className="font-semibold hover:text-secondary transition-colors">
-                    {t.contact.snapchat}
-                  </a>
-                </div>
-              </li>
-               <li className="flex items-start gap-4">
-                <div className="p-2 bg-secondary/10 rounded-lg text-secondary">
-                  <TikTokIcon size={20} />
-                </div>
-                 <div>
-                   <span className="block text-xs text-gray-400 dark:text-gray-500">{t.contact.tiktok}</span>
-                   <a href={CONTACT_INFO.tiktokLink} target="_blank" rel="noreferrer" className="font-semibold hover:text-secondary transition-colors">
-                    {t.contact.tiktok}
-                  </a>
-                </div>
-              </li>
-
-              <li className="flex items-start gap-4">
-                <div className="p-2 bg-secondary/10 rounded-lg text-secondary">
-                  <Youtube size={20} />
-                </div>
-                <div>
-                  <span className="block text-xs text-gray-400 dark:text-gray-500">{t.contact.youtube}</span>
-                  <a href={CONTACT_INFO.youtubeLink} target="_blank" rel="noreferrer" className="font-semibold hover:text-secondary transition-colors">
-                    {t.contact.youtube}
-                  </a>
-                </div>
-              </li>
+              {socialLinks.map((social, idx) => (
+                <li key={idx} className="flex items-start gap-4">
+                  <div className="p-2 bg-secondary/10 rounded-lg text-secondary">
+                    {social.icon}
+                  </div>
+                  <div>
+                    <span className="block text-xs text-gray-400 dark:text-gray-500">{social.label}</span>
+                    <a href={social.link} target="_blank" rel="noreferrer" className="font-semibold hover:text-secondary transition-colors text-sm">
+                      {social.label}
+                    </a>
+                  </div>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -171,24 +129,11 @@ const Contact: React.FC = () => {
           <p>© {new Date().getFullYear()} {t.common.siteName}. {t.contact.rights}</p>
           
           <div className="flex items-center gap-4 flex-wrap justify-center">
-             <a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-secondary transition-colors" aria-label="Whatsapp">
-                <MessageCircle size={20} />
-             </a>
-             <a href={CONTACT_INFO.telegramLink} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-secondary transition-colors" aria-label="Telegram">
-                <Send size={20} />
-             </a>
-              <a href={CONTACT_INFO.instagramLink} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-secondary transition-colors" aria-label="Instagram">
-                <Instagram size={20} />
-             </a>
-             <a href={CONTACT_INFO.snapchatLink} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-secondary transition-colors" aria-label="Snapchat">
-                <SnapchatIcon size={20} />
-             </a>
-             <a href={CONTACT_INFO.tiktokLink} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-secondary transition-colors" aria-label="TikTok">
-                <TikTokIcon size={20} />
-             </a>
-             <a href={CONTACT_INFO.youtubeLink} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-secondary transition-colors" aria-label="Youtube">
-                <Youtube size={20} />
-             </a>
+             {socialLinks.map((social, idx) => (
+               <a key={idx} href={social.link} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-secondary transition-colors" aria-label={social.aria}>
+                  {social.icon}
+               </a>
+             ))}
           </div>
 
           <div className="flex items-center gap-2">
